@@ -56,3 +56,6 @@ Context switching is a mechanism in which the CPU switches to another process, a
 
 ### Orphan Process
 An orphan process is a process whose parent has terminated while it is still running. If a parent process starts a child process and then the parent crashes or exits before the child finishes, that child becomes an orphan. The operating system reassigns it to the init process so it can continue running normally.
+
+### Zombie process
+Zombie process is the process whose execution has been terminated but it still has an entry in the process table. Once the parent process reads the exit status of the child process, then the zombie process is eliminated from the process table. This is known as reaping the zombie process.
