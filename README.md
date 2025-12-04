@@ -45,3 +45,14 @@ Job Queue contains processes in the new state and in secondary memory. It has a 
 Ready queue contains the processes that are in the ready state and in main memory. It has the CPU scheduler (short-term scheduler) that picks a process based on the scheduling policy and dispatches it to the CPU for execution.
 
 > Degree of Multiprogramming: It is the number of processes loaded in the main memory at a time
+
+____
+
+### Swapping
+Swapping is a mechanism in which a process can be temporarily moved out from main memory into secondary memory (swap space) to make memory available for other processes. Later, it can be swapped back into main memory, and this swapping is done by the medium-term scheduler (MTS).
+
+### Context Switching
+Context switching is a mechanism in which the CPU switches to another process, and before it switches, the kernel saves the state of the current process in the PCB, so later when it runs again, the state is restored.
+
+### Orphan Process
+An orphan process is a process whose parent has terminated while it is still running. If a parent process starts a child process and then the parent crashes or exits before the child finishes, that child becomes an orphan. The operating system reassigns it to the init process so it can continue running normally.
