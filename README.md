@@ -21,7 +21,7 @@ How OS creates a process?
 
 
 ### Attributes of a Process
-OS keep tracks of the proce ss using a table like data structure and each entry in the table is process control block (PCB).
+OS keep tracks of the process using a table like data structure and each entry in the table is process control block (PCB).
 PCB has process ID, PC, etc. When the process is running and it's time slice is expired, then its current CPU register values are saved into the PCB. When it is scheduled to run, these values are restored from the PCB back into the CPU registers and the program continues executing.
 
 ___
@@ -59,3 +59,36 @@ An orphan process is a process whose parent has terminated while it is still run
 
 ### Zombie process
 Zombie process is the process whose execution has been terminated but it still has an entry in the process table. Once the parent process reads the exit status of the child process, then the zombie process is eliminated from the process table. This is known as reaping the zombie process.
+
+___
+
+### Non-Preemptive Scheduling
+Once CPU has been allocated to a process, the process doesn't leave the CPU until the process is terminated or switched to wait state. It has high starvation and less CPU utilization.
+
+### Preemptive scheduling
+CPU can be taken away from the process, once the process's time quantum expires along with terminating or switching to wait state. It has less starvation and high CPU utilization.
+
+### Goals of CPU Scheduling
+- Min Turnaround Time: It is the time elapsed between the process getting into the ready queue and after it's completion, getting terminated.
+- Min Wait Time
+- Max CPU Utilization
+- Min Response Time
+- Max Throughput of the System
+
+#### Throughput
+It is the no processes getting completed per unit time.
+
+#### Arrival Time
+It is the time taken by the process to arrive at the ready queue.
+
+#### Burst Time
+It is the time taken by the process for its execution
+
+#### Response Time
+It is the time duration between the process getting into ready queue and getting a CPU for the first time
+
+#### Wait Time
+It is the time elapsed by the process waiting for CPU
+
+### Convoy Effect
+Whichever process comes first in the ready queue, will be given CPU first. As a result, if one process has a high execution time (Burst time), then it will block other process waiting in the ready queue who have a shorter burst time. This situation where many processes need CPU for shorter time are blocked by one process holding the CPu for a long time is called **Convoy Effect**. It causes poor resource management.
