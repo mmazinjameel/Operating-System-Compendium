@@ -92,3 +92,13 @@ It is the time elapsed by the process waiting for CPU
 
 ### Convoy Effect
 Whichever process comes first in the ready queue, will be given CPU first. As a result, if one process has a high execution time (Burst time), then it will block other process waiting in the ready queue who have a shorter burst time. This situation where many processes need CPU for shorter time are blocked by one process holding the CPu for a long time is called **Convoy Effect**. It causes poor resource management.
+
+____
+
+## CPU Scheduling
+
+### Shortest Job First (SJF) – Non-preemptive
+This scheduling gives the CPU the process with the least Burst Time. To do this, the system must estimate the burst time of all the process in the ready queue. Convoy effect can happen here
+
+### Shortest Job First (SJF) – Preemptive
+This scheduling gives the CPU the process with the least Burst Time. CPU can be taken away from the process, once the process's time quantum expires along with terminating or switching to wait state. When we run short jobs before long ones, the short jobs wait much less, and the extra waiting time added to the long job is small Overall, this reduces the average waiting time for all processes.
