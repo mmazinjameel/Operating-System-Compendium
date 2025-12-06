@@ -102,3 +102,13 @@ This scheduling gives the CPU the process with the least Burst Time. To do this,
 
 ### Shortest Job First (SJF) – Preemptive
 This scheduling gives the CPU the process with the least Burst Time. CPU can be taken away from the process, once the process's time quantum expires along with terminating or switching to wait state. When we run short jobs before long ones, the short jobs wait much less, and the extra waiting time added to the long job is small Overall, this reduces the average waiting time for all processes.
+
+### Priority Scheduling [Non-Preemptive]
+Priority is assigned to a process when it is created.
+
+### Priority Scheduling [Preemptive]
+If the CPU is running a process and a new process arrives with a higher priority, then the CPU will stop the current one and execute the one with higher priority. This can create a problem called starvation. Low-priority processes might wait for a very long time and may even never get a chance to run. 
+Solution is Ageing. In Ageing, if a process has been waiting for a long time, the system slowly increases its priority.
+
+### Round Robin
+It is a CPU Scheduling algorithm that gives each process a fixed time slice and cycles through all process in order. It ensures that no process holds the CPU for too long.
