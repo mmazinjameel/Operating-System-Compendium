@@ -10,8 +10,9 @@ ___
 
 ## Process
 
-Program is the compiled code ready for execution
-Process is the program under execution
+Program is the compiled code ready for execution.
+
+Process is the program under execution.
 
 How OS creates a process?
 - OS loads the program and static data into memory
