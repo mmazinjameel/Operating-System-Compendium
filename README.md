@@ -112,3 +112,40 @@ Solution is Ageing. In Ageing, if a process has been waiting for a long time, th
 
 ### Round Robin
 It is a CPU Scheduling algorithm that gives each process a fixed time slice and cycles through all process in order. It ensures that no process holds the CPU for too long.
+
+____
+
+### Multi-level scheduling
+We have 3 kinds of queue with the first having the highest priority; System process queue, Interactive process queue, Batch process queue. Each queue has its own scheduling algorithm. Scheduling among different sub-queues is implemented using fixed priority preemptive schedulinh. If an interactive process is being executed, then the batch process will be preempted. There is starvation for lower priority queues. Convoy effect is also present.
+
+### Multi-level feedback queue scheduling (MLFQ)
+In this, we have multiple sub-queues. In this type of scheduling, the movement of processes between different queues is permitted. The main idea is to put the processes having high burst time into lower queues (lower priorities) and put the input bound and interactive process in higher priority queue. 
+To solve the problem of low priority process waiting indefinitely is solved by Ageing. There is less starvation and is flexible
+
+____
+
+## Concurrency
+It is the execution of the multiple instruction sequences at the same time. It happens in the OS when there are several process threads running parallel.
+
+## Thread
+A thread is the lightweight execution unit that contains its own sequence of instructions
+
+### Thread Scheduling
+Threads are scheduled for execution based on their priority. The OS gives each thread a small amount of CPU time, called time slice
+
+### Thread Context Switching
+Thread context switching means the operating system pauses the execution of one thread and starts the execution of another thread. In doing so, it saves current thread's current state like program counter, stack etc., so it can continue later on from that point. Memory address is not switched as all the threads in a process shares the same memory address. It is faster than process switching. Since new thread is working in the same program, so cached data is still relevant.
+
+### How Each Thread Get Access to a CPU ?
+The OS decides which thread should be executed by the CPU based on the thread scheduling algorithm. When a thread is scheduled to run, CPU retrieves the instruction indicated by that thread's program counter and begin executing it. Each thread has a program counter, that tells the CPU what instruction that thread should execute next.
+
+### I/O and Thread Control Block
+Context switching in threads an occur for the same reasons as processes, such as when the thread is waiting for I/O or when its time quantime expires. A Thread Control Block (TCB) is used the thread's state during context switching just like PCB.
+
+> Single CPu can never get true performance gains from multithreading because single CPU can only run one thread at a time. It cannot make real parallel execution happen
+
+### Multithreading
+Multithreading is the ability of the program or operating system to run multiple threads within a single process at the same time. Advantages:
+- Efficient CPU utilization
+- Faster execution of a task
+
