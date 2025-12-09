@@ -150,3 +150,29 @@ Multithreading is the ability of the program or operating system to run multiple
 - Efficient CPU utilization
 - Faster execution of a task
 
+___
+
+## Process Synchronization
+Process synchronization is the coordination of multiple processes to ensure they access shared resources safely and without conflicts.
+
+### Critical Section
+Critical Section referes to the segment of the code where process/threads access shared resources.
+
+### Race Condition
+Race condition occurs when two or more processes try to access or modify shared resource at the same time. Since their execution order is unpredictable, the final result can become incorrect or inconsistent.
+
+### Solution to Race Condition
+- Make the critical code section an atomic operation, i.e, executed in one CPU cycle.
+- Make the processes mutually exclusive using locks, i.e, don't let different processes execute at the same time. Ensure that they execute sequentially. It fully blocks all other processors from a resource
+- Semaphore is the simple locking tool that controls how many processes or threads can access a shared resource at the same time.
+
+### Peterson's Solution
+Peterson's solution is a software only method that ensures two threads take turns safely when accessing a shared resource.
+
+### Mutexs or Locks 
+Mutexs or Locks are tools that let only one thread or process enter a critical section at a time. It comes with several disadvantages:
+- Contention: If one thread holds the lock, others wait. But if one thread holds the lock, gets crashed then others have to wait forever.
+-  They are difficult to debug because timing issues are hard to reproduce.
+
+
+
