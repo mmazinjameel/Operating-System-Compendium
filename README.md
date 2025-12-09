@@ -143,7 +143,7 @@ The OS decides which thread should be executed by the CPU based on the thread sc
 ### I/O and Thread Control Block
 Context switching in threads an occur for the same reasons as processes, such as when the thread is waiting for I/O or when its time quantime expires. A Thread Control Block (TCB) is used the thread's state during context switching just like PCB.
 
-> Single CPu can never get true performance gains from multithreading because single CPU can only run one thread at a time. It cannot make real parallel execution happen
+> Single CPU can never get true performance gains from multithreading because single CPU can only run one thread at a time. It cannot make real parallel execution happen
 
 ### Multithreading
 Multithreading is the ability of the program or operating system to run multiple threads within a single process at the same time. Advantages:
@@ -173,6 +173,14 @@ Peterson's solution is a software only method that ensures two threads take turn
 Mutexs or Locks are tools that let only one thread or process enter a critical section at a time. It comes with several disadvantages:
 - Contention: If one thread holds the lock, others wait. But if one thread holds the lock, gets crashed then others have to wait forever.
 -  They are difficult to debug because timing issues are hard to reproduce.
+
+___
+
+## Conditional Variables
+Conditional variable is a synchronization primitive that lets the thread wait until a certain condition occurs. Suppose we have 2 threads T1 and T2. Suppose T2 is being executed and T1 also comes, then it goes in the wait state based on the condition. When T2 is finished executing, it will notify the condition that put T1 on wait. The lock will be released and T1 will start executing. In the meantime, the CPU can perform other work, thus avoiding busy waiting.
+
+## Semaphore
+Semaphore is a synchronization method. Suppose we have multiple instances of a resource and say we have 3 resources, and 10 threads $T_1 \right T_10$. We also have a variable named sema = 3. When $T_1$ takes one resource, then sema -= 1. The same happens for other threads $T_2, T_3$. When $T_1$ finishes executing, sema += 1, and then the next waiting thread will be allowed to execute.
 
 
 
