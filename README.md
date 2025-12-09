@@ -177,10 +177,10 @@ Mutexs or Locks are tools that let only one thread or process enter a critical s
 ___
 
 ## Conditional Variables
-Conditional variable is a synchronization primitive that lets the thread wait until a certain condition occurs. Suppose we have 2 threads T1 and T2. Suppose T2 is being executed and T1 also comes, then it goes in the wait state based on the condition. When T2 is finished executing, it will notify the condition that put T1 on wait. The lock will be released and T1 will start executing. In the meantime, the CPU can perform other work, thus avoiding busy waiting.
+Conditional variable is a synchronization primitive that lets the thread wait until a certain condition occurs. Suppose we have 2 threads $T_1$ and $T_2$. Suppose $T_2$ is being executed and $T_1$ also comes, then it goes in the wait state based on the condition. When $T_2$ is finished executing, it will notify the condition that puts $T_1$ on wait. The lock will be released and T1 will start executing. In the meantime, the CPU can perform other work, thus avoiding busy waiting.
 
 ## Semaphore
-Semaphore is a synchronization method. Suppose we have multiple instances of a resource and say we have 3 resources, and 10 threads $T_1 \right T_10$. We also have a variable named sema = 3. When $T_1$ takes one resource, then sema -= 1. The same happens for other threads $T_2, T_3$. When $T_1$ finishes executing, sema += 1, and then the next waiting thread will be allowed to execute.
+Semaphore is a synchronization method. Suppose we have multiple instances of a resource and say we have 3 resources, and 10 threads $T_1 \rightarrow T_10$. We also have a variable named sema = 3. When $T_1$ takes one resource, then sema -= 1. The same happens for other threads $T_2, T_3$. When $T_1$ finishes executing, sema += 1, and then the next waiting thread will be allowed to execute.
 
 
 
