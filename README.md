@@ -182,5 +182,53 @@ Conditional variable is a synchronization primitive that lets the thread wait un
 ## Semaphore
 Semaphore is a synchronization method. Suppose we have multiple instances of a resource and say we have 3 resources, and 10 threads $T_1 \rightarrow T_{10}$. We also have a variable named sema = 3. When $T_1$ takes one resource, then sema -= 1. The same happens for other threads $T_2, T_3$. When $T_1$ finishes executing, sema += 1, and then the next waiting thread will be allowed to execute.
 
+___
+
+## Producer-Consumer Problem
+There are two types of threads:
+- The Producer, which creates data and puts it into a shared buffer.
+- The Consumer, which takes data out of that buffer
+
+The buffer has a fixed number of slots, so it can become either fully or empty. Main problems that must be solved:
+- Only one thread should access the buffer at a time.
+- The producer must not insert data if the buffer is full.
+- The consumer must not remove data if the buffer is empty.
+
+To solve this, we have semaphores:
+- A binary semaphore ensures that only one thread enters the critical section at a time.
+- A counting semaphore `empty` tracks how many empty slots are left.
+- Another counting semaphore `full` tracks how many filled slots exist
+
+How the solution works:
+- If the buffer is empty, the consumer must wait until the producer adds something.
+- If the buffer is full, the producer must wait until the consumer removes something.
+- Mutex ensures orderly access so both cannot modify the buffer at the same time.
+
+___
+
+## Reader-Writer Problem
+This situation involves shared database. Many threads may want to read from it and many may want to write to it. The key idea of the problem is:
+- Many readers can read at the same time.
+- But only one writer should write at a time.
+- And when a writer is writing, no reader should be allowed inside.
+
+- `mutex`: lets only one thread update readcount at a time.
+- `wrt`: ensures exclusive access to the database.
+- `readcount`: number of active readers.
+
+### Writer Logic
+- Wait on `wrt`
+- Write
+- Signal `wrt` (only one writer can enter because `wrt` acts as the lock)
+
+### Reader Logic
+- Wait `mutex`, incremenet `readcount`
+- if first reader $\rightarrow$ wait on `wrt` (block writers)
+- Signal `mutex`
+- Read
+- Wait `mutex`, decrement `readcount`
+- if last reader $\rightarrow$ signal `wrt`
+- Signal `mutex`
+
 
 
