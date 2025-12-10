@@ -230,5 +230,12 @@ This situation involves shared database. Many threads may want to read from it a
 - if last reader $\rightarrow$ signal `wrt`
 - Signal `mutex`
 
+___
 
+## The Dining Philosopher
+The dining philosopher problem models multiple competing process sharing limited resources in a circular arrangement. We can use semaphore to solve this. Make each fork as a semaphore (binary). `fork[5]{1}`. When a philosopher picks a fork, it calls a `wait()` on `fork[i]=1` and `fork[(i+1)%n]=1`, so other philosophers can't use it. Once it's done using that fork, it will call `release()`. Although the semaphore solution makes sure that no two neighbors are eating simultaneously
+but it could still create Deadlock. Suppose that all 5 ph. Become hungry at the same time and each picks up their left fork, then all fork semaphores would be 0. Some solutions:
 
+- Allow at most 4 philosopher to be sitting simultaneously. So P1 can pick both the forks, complete his work and when done, then P2 can complete his task.
+- Allow a philospher, to pick up the fork only if both are available and make it atomic.
+- Odd-even rule: Odd philosophers pick up first his left fork and then his right fork.
