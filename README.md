@@ -239,3 +239,14 @@ but it could still create Deadlock. Suppose that all 5 ph. Become hungry at the 
 - Allow at most 4 philosopher to be sitting simultaneously. So P1 can pick both the forks, complete his work and when done, then P2 can complete his task.
 - Allow a philospher, to pick up the fork only if both are available and make it atomic.
 - Odd-even rule: Odd philosophers pick up first his left fork and then his right fork.
+
+___
+
+## Deadlock
+Suppose a process requests a resource. If the resource is not available, the process enters a waiting state. Sometimes, the waiting state can be indefinitely long because the resource that was requested is busy sometimes foreverly.
+
+Deadlock Necessary Conditions
+- Mutual Exclusion: Only 1 process can request a resource at a time, if another process requests that resource, then that process needs to enter in a wait state until the resource has been released.
+- Hold & Wait: A process must hold at least one resource and must waiting for other resource, but that resource is held by other processes.
+- No-preemption: A resource must be voluntarily released by the process after completion of execution.
+- Circular Wait: A set ${P0, P1, ... , Pn$ of waiting resources must exist such that P0 is waiting for a resource held by P1. P1 is waiting for a resource held by P2, and so on.
