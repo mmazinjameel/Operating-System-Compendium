@@ -249,4 +249,4 @@ Deadlock Necessary Conditions
 - Mutual Exclusion: Only 1 process can request a resource at a time, if another process requests that resource, then that process needs to enter in a wait state until the resource has been released.
 - Hold & Wait: A process must hold at least one resource and must waiting for other resource, but that resource is held by other processes.
 - No-preemption: A resource must be voluntarily released by the process after completion of execution.
-  - Circular Wait: A set ${P0, P1, ... , Pn}$ of waiting resources must exist such that P0 is waiting for a resource held by P1. P1 is waiting for a resource held by P2, and so on.
+- Circular Wait: A set ${P0, P1, ... , Pn}$ of waiting resources must exist such that P0 is waiting for a resource held by P1. P1 is waiting for a resource held by P2, and so on.
