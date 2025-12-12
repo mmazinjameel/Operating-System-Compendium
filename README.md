@@ -245,8 +245,21 @@ ___
 ## Deadlock
 Suppose a process requests a resource. If the resource is not available, the process enters a waiting state. Sometimes, the waiting state can be indefinitely long because the resource that was requested is busy sometimes foreverly.
 
-Deadlock Necessary Conditions
+### Deadlock Necessary Conditions
 - Mutual Exclusion: Only 1 process can request a resource at a time, if another process requests that resource, then that process needs to enter in a wait state until the resource has been released.
 - Hold & Wait: A process must hold at least one resource and must waiting for other resource, but that resource is held by other processes.
 - No-preemption: A resource must be voluntarily released by the process after completion of execution.
 - Circular Wait: A set ${P0, P1, ... , Pn}$ of waiting resources must exist such that P0 is waiting for a resource held by P1. P1 is waiting for a resource held by P2, and so on.
+
+### Methods for handling Deadlocks
+- Use a protocol to prevent or avoid deadlocks, ensuring that the system will never enter a deadlocked state.
+- Allow the system to enter a deadlocked state, detect it, and recover.
+- Ignore the problem altogether and pretend that deadlock never occur in system (Ostrich algorithm)
+
+### Deadlock Prevention
+- Mutual Exclusion: Use locks only for non-shareable resources.
+- Hold & Wait: To ensure H&W condition never occurs in the system, we must guarantee that, whenever a process requests a resource, it doesn't hold any other resource,
+  - Protocol (A) can be, each process has to request and be allocated all its resources before its execution.
+  - Protocol (B) can be, only allow a process to request resources only when it has none.
+- No preemption: If a process is holding a resource R1 and request a resource R2 and it is busy. The R1 should be released and the process must wait for R2 to be allocated to it. It can also give rise to live lock. Another thing can be done, suppose if P1 is requesting a resource R2, which is held by P2, which itself is waiting for R3, then in the meantime we can release R2 and allocate it to R1.
+- Circular Wait: Suppose if P1 is having R1, and is waiting for R2. R2 is with P2, but P2 wants R1. Then we can implement a technique which involves ordering. Start with R1, both P1 and P2 try to acquire and whosoever acquires it first will go on acquiring R2 while the process having it unacquired, will wait for R1.
