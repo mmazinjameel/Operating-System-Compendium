@@ -263,3 +263,17 @@ Suppose a process requests a resource. If the resource is not available, the pro
   - Protocol (B) can be, only allow a process to request resources only when it has none.
 - No preemption: If a process is holding a resource R1 and request a resource R2 and it is busy. The R1 should be released and the process must wait for R2 to be allocated to it. It can also give rise to live lock. Another thing can be done, suppose if P1 is requesting a resource R2, which is held by P2, which itself is waiting for R3, then in the meantime we can release R2 and allocate it to R1.
 - Circular Wait: Suppose if P1 is having R1, and is waiting for R2. R2 is with P2, but P2 wants R1. Then we can implement a technique which involves ordering. Start with R1, both P1 and P2 try to acquire and whosoever acquires it first will go on acquiring R2 while the process having it unacquired, will wait for R1.
+
+___
+
+## Deadlock Avoidance
+Kernel knows info about the resource. By this, system can decide for each request, whether the process should wait. To decide whether the current request can be satisfied or delayed, the system must consider the resources available, allocated and future requests.
+- Schedule process and its resource allocation in such a way that the DL never occur.
+
+### Safe State
+A state is safe if a system can allocate resources to each process and still avoid DL. A system is in safe state if there exists a safe sequence.
+
+### Unsafe State
+In an unsafe state, a system cannot prevent the processes from requesting resources in such a way that deadlock occurs.
+
+> The main idea of deadlock avoidance is, if a request is made for a resource, then it can only be allocated if the resulting state is a safe state.
