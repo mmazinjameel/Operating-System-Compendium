@@ -277,3 +277,11 @@ A state is safe if a system can allocate resources to each process and still avo
 In an unsafe state, a system cannot prevent the processes from requesting resources in such a way that deadlock occurs.
 
 > The main idea of deadlock avoidance is, if a request is made for a resource, then it can only be allocated if the resulting state is a safe state.
+
+### Deadlock Detection
+If after making a wait for graph we detect a cycle, then there is a deadlock. If not, then not. (Valid for single Instance). For multiple instances, we can use banker alogrithm.
+
+
+### Deadlock Recovery
+- Process Termination: Abort all DL processes or Abort one process at a time until DL cycle is eliminated
+- Resource preemption: We successively preempt some resources from processes and give these resources to other processes until DL cycle is broken
