@@ -281,6 +281,24 @@ In an unsafe state, a system cannot prevent the processes from requesting resour
 ### Deadlock Detection
 If after making a wait for graph we detect a cycle, then there is a deadlock. If not, then not. (Valid for single Instance). For multiple instances, we can use banker alogrithm.
 
+___
+
+## Free Space Management
+
+### Internal Fragmentation
+It is the wasted memory inside an allocated block, because the process does not use all of it.
+
+### External Fragmentation
+It is the wasted memory between allocated blocks, because free memory is split into small pieces.
+
+> Free holes in the memory are represented by a free list (linked list). It stores the starting physical address of the free memory location.
+
+There are certain algorithms to find which hole is best for the process to be allocated to
+- First Fit: Just find the first hole that can accommodate the process and allocate it to it.
+- Next Fit: Suppose we want to allocate free hole to a 90kb process. WE have 50 kb $\rightarrow$ 100 kb $\rightarrow$ etc. 90 kb will be filled in the second node (hole), so the resulting second node value will be 10kb. Now a next process of 10kb needs to be allocated. It will start its search from the second node only.
+- Best Fit: We allocate smallest hole that is big enough. It causes less internal fragmentation
+- Worst Fit: We allocate largest hole that is big enough. Leaves larger holes that may accommodate other processes
+
 
 ### Deadlock Recovery
 - Process Termination: Abort all DL processes or Abort one process at a time until DL cycle is eliminated
