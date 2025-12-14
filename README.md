@@ -295,7 +295,7 @@ It is the wasted memory between allocated blocks, because free memory is split i
 
 There are certain algorithms to find which hole is best for the process to be allocated to
 - First Fit: Just find the first hole that can accommodate the process and allocate it to it.
-- Next Fit: Suppose we want to allocate free hole to a 90kb process. WE have 50 kb $\rightarrow$ 100 kb $\rightarrow$ etc. 90 kb will be filled in the second node (hole), so the resulting second node value will be 10kb. Now a next process of 10kb needs to be allocated. It will start its search from the second node only.
+- Next Fit: Suppose we want to allocate free hole to a 90kb process. We have 50 kb $\rightarrow$ 100 kb $\rightarrow$ etc. 90 kb will be filled in the second node (hole), so the resulting second node value will be 10kb. Now a next process of 10kb needs to be allocated. It will start its search from the second node only.
 - Best Fit: We allocate smallest hole that is big enough. It causes less internal fragmentation
 - Worst Fit: We allocate largest hole that is big enough. Leaves larger holes that may accommodate other processes
 
@@ -303,3 +303,14 @@ There are certain algorithms to find which hole is best for the process to be al
 ### Deadlock Recovery
 - Process Termination: Abort all DL processes or Abort one process at a time until DL cycle is eliminated
 - Resource preemption: We successively preempt some resources from processes and give these resources to other processes until DL cycle is broken
+
+___
+
+## Paging
+Paging is a memory management scheme that permits the physical address space of a process to be non contiguous.
+
+### Page
+Page is a fixed size block of memory used by the operating system to divide a process's memory into manageable pieces.
+
+### Address Space Identifier (ASID)
+ASID is stored in each entry of TLB. It identifies each process and is used to provide address space protection and allow the tlb to contain entries of several different processes.
