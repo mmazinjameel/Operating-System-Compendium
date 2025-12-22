@@ -314,3 +314,8 @@ Page is a fixed size block of memory used by the operating system to divide a pr
 
 ### Address Space Identifier (ASID)
 ASID is stored in each entry of TLB. It identifies each process and is used to provide address space protection and allow the tlb to contain entries of several different processes.
+
+___
+
+## Thrashing
+Thrashing is a scenario in which system spends most of its time swapping pages between memory and disk space rather than doing actual work, making performance very slow.
